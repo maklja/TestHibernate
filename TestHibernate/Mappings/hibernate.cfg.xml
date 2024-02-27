@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+
+	<!-- Database connection settings -->
+	<session-factory>
+		<property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+		<property name="connection.driver_class">NHibernate.Driver.NpgsqlDriver</property>
+		<property name="connection.connection_string">server=localhost;Port=5432;Database=hibernate-test;User Id=postgres;Password=admin;</property>
+
+		<!-- Database dialect -->
+		<property name="dialect">NHibernate.Dialect.PostgreSQL82Dialect</property>
+
+		<!-- Enable/disable the second-level cache -->
+		<property name="cache.provider_class">NHibernate.Cache.NoCacheProvider, NHibernate</property>
+
+		<!-- Show SQL statements in the console -->
+		<property name="show_sql">true</property>
+
+		<!-- Format SQL for better readability -->
+		<property name="format_sql">true</property>
+
+		<!-- Enable automatic validation of the schema -->
+		<property name="hbm2ddl.auto">update</property>
+
+		<!-- Mapping files or assemblies containing mapped classes -->
+		<mapping assembly="TestHibernate" />
+
+		<!-- Alternatively, you can specify individual mapping files -->
+		<!-- <mapping resource="Your.Mapping.File.hbm.xml" /> -->
+
+	</session-factory>
+</hibernate-configuration>

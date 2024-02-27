@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="TestHibernate" namespace="TestHibernate.Models">
+
+	<class name="Company" table="Company" dynamic-update="true" xmlns="urn:nhibernate-mapping-2.2">
+
+		<id name="Id">
+			<generator class = "guid.comb"/>
+		</id>
+
+		<property name="Name"/>
+
+		<component name="Address">
+			<property name="Street"/>
+			<property name="City"/>
+		</component>
+
+		<bag name="Employees" inverse="true" cascade="all">
+			<key column="CompanyId" />
+			<one-to-many class="Employee" />
+		</bag>
+
+		<bag name="Cars" table="CompanyCars" inverse="false" cascade="all">
+			<key column="CompanyId" />
+			<many-to-many class="Car" column="CarId" />
+		</bag>
+
+	</class>
+</hibernate-mapping>
